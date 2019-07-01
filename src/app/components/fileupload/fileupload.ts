@@ -34,9 +34,7 @@ import {HttpClient, HttpEvent, HttpEventType, HttpHeaders} from "@angular/common
                 <div class="ui-fileupload-files" *ngIf="hasFiles()">
                     <div *ngIf="!fileTemplate">
                         <div class="ui-fileupload-row" *ngFor="let file of files; let i = index;">
-                            <div><img [src]="file.objectURL" *ngIf="isImage(file)" [width]="previewWidth" /></div>
-                            <div>{{file.name}}</div>
-                            <div>{{formatSize(file.size)}}</div>
+                            <div><img [src]="file.objectURL" *ngIf="isImage(file)" [width]="previewWidth" /><img [src]="file.base64URL" *ngIf="file.base64URL" [height]="previewWidth" /><img [src]="file.url" *ngIf="file.url" [height]="previewWidth" /></div>
                             <div>
                                 <button type="button" icon="pi pi-times" pButton (click)="remove($event,i)" [disabled]="uploading"></button>
                             </div>
@@ -229,7 +227,7 @@ export class FileUpload implements AfterViewInit,AfterContentInit,OnDestroy,Bloc
 
     isFileSelected(file: File): boolean{
         for(let sFile of this.files){
-            if((sFile.name + sFile.type + sFile.size) === (file.name + file.type+file.size)) {
+            if((sFile.name + sFile.size) === (file.name + file.size)) {
                 return true;
             }
         }
