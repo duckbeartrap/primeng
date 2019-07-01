@@ -11,8 +11,8 @@
     "e2e": "ng e2e",
     "build-components": "ngc -p tsconfig-release.json",
     "build-assets": "gulp build-assets",
-    "build-styles": "node-sass src/assets/components -o src/assets/components",
-    "build-redistribute": "npm run build-components && npm run build-assets && npm run build-styles"
+    "build-exports": "gulp build-exports",
+    "build-redistribute": "npm run build-components && npm run build-assets && npm run build-exports"
   },
   "repository": {
     "type": "git",
