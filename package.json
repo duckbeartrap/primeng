@@ -8,7 +8,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-components": "ngc -p tsconfig-release.json",
+    "build-assets": "gulp build-assets",
+    "build-styles": "node-sass src/assets/components -o src/assets/components",
+    "build-redistribute": "npm run build-components && npm run build-assets && npm run build-styles"
   },
   "repository": {
     "type": "git",
@@ -63,6 +67,7 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3",
     "web-animations-js": "angular/web-animations-js#release_pr208",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "node-sass": "^4.5.3"
   }
 }
